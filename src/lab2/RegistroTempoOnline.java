@@ -13,5 +13,17 @@ public class RegistroTempoOnline {
         this.nomeDisciplina = nomeDisciplina;
         this.tempoOnlineEsperado = tempoOnlineEsperado;
     }
-
+    public void adicionaTempoOnline(int tempo) {
+        this.tempoInvestidoOnline += tempo;
+    }
+    public boolean atingiuMetaTempoOnline() {
+        if (this.tempoInvestidoOnline >= this.tempoOnlineEsperado) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public String toString(){
+        return this.nomeDisciplina + " " +this.tempoInvestidoOnline + " " + this.tempoOnlineEsperado;
+    }
 }
