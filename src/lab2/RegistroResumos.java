@@ -14,6 +14,7 @@ public class RegistroResumos {
         this.conteudo = new String[numeroDeResumos];
         this.quantidadeResumos = 0;
     }
+
     public void adiciona(String tema, String conteudo) {
         if (proximaPosicao > limite-1) {
             this.tema[proximaPosicao-limite-1] = tema;
@@ -33,22 +34,26 @@ public class RegistroResumos {
         }
         return resultado;
     }
+
     public String imprimeResumos() {
         String lt = "";
         for (int i=0; i<tema.length; i++) {
-            if (i > 0) {
-                lt += " | ";
+            if (this.tema[i] != null ) {
+                if (i > 0) {
+                    lt += " | ";
+                }
+                lt += this.tema[i];
             }
-            lt += this.tema[i];
         }
-        return "- " + this.quantidadeResumos +"resumo(s) cadastrado(s)\n- " + lt;
+        return "- " + this.quantidadeResumos +" resumo(s) cadastrado(s)\n- " + lt;
     }
     public int conta() {
         return quantidadeResumos;
     }
-    public boolean temResumo(String t) {
+
+    public boolean temResumo(String temas) {
         for (int i = 0; i < tema.length; i++) {
-            if (t.equals(this.tema[i])) {
+            if (temas.equals(this.tema[i])) {
                 return true;
             }
         }

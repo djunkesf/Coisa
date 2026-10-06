@@ -23,7 +23,9 @@ public class RegistroTempoOnline {
             return false;
         }
     }
+
+    @Override
     public String toString(){
-        return this.nomeDisciplina + " " +this.tempoInvestidoOnline + " " + this.tempoOnlineEsperado;
+        return this.nomeDisciplina + " " +this.tempoInvestidoOnline + "/" + this.tempoOnlineEsperado;
     }
 }
