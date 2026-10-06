@@ -3,8 +3,11 @@ package lab2;
 import java.util.Arrays;
 
 /**
+ * Representação de uma disciplina. Toda disciplina precisa ter um nome, horas de estudo e notas.
  *
- */
+ * @author Daniela junkes Fernandes
+ * */
+
 public class Disciplina {
     /**
      * Nome da Disciplina que sera cadastrada.
@@ -30,7 +33,7 @@ public class Disciplina {
     }
 
     /**
-     * Metodo sem retorno que cadastra horas
+     * Metodo sem retorno que cadastra horas de estudo do aluno.
      * @param horas
      */
     public void cadastraHoras(int horas){
@@ -72,7 +75,7 @@ public class Disciplina {
     }
 
     /**
-     * Retorna a String que representa o nome da disciplina, as horas de estudo, a media e as notas da disciplina.
+     * Retorna uma representação de texto que representa o nome da disciplina, as horas de estudo, a media e as notas da disciplina.
      * @return uma representacao em String
      */
     @Override
