@@ -10,6 +10,7 @@ public class Disciplina {
 
 
     public Disciplina(String nomedaDisciplina) {
+        this.notas = new double[4];
         this.nomedaDisciplina = nomedaDisciplina;
     }
     public void cadastraHoras(int horas){

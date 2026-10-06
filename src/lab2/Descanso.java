@@ -14,10 +14,14 @@ public class Descanso {
         this.numeroSemana = numeroSemana;
     }
     public String getStatusGeral(){
-        if (this.horasDescanso / this.numeroSemana >= 26) {
-            return "descansado";
-        } else {
+        if (numeroSemana == 0) {
             return "cansado";
+        } else {
+            if (this.horasDescanso / this.numeroSemana >= 26) {
+                return "descansado";
+            } else {
+                return "cansado";
+            }
         }
     }
 }

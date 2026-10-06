@@ -24,28 +24,34 @@ public class RegistroResumos {
 
         }
         quantidadeResumos ++;
-        proximaPosicao++;
+        proximaPosicao ++;
     }
     public String[] pegaResumos() {
-        String[] resumos;
-        resumos = new String[quantidadeResumos];
-        for (int i; quantidadeResumos + 1; i++) {
-            resumos[i] = tema[i] + ": " + conteudo[i];
+        String[] resultado = new String[this.quantidadeResumos];
+        for (int i =0; i < this.quantidadeResumos; i++) {
+            resultado[i] = this.tema[i] + ": " + this.conteudo[i];
         }
-        return resumos;
+        return resultado;
     }
-
     public String imprimeResumos() {
-
+        String lt = "";
+        for (int i=0; i<tema.length; i++) {
+            if (i > 0) {
+                lt += " | ";
+            }
+            lt += this.tema[i];
+        }
+        return "- " + this.quantidadeResumos +"resumo(s) cadastrado(s)\n- " + lt;
     }
     public int conta() {
         return quantidadeResumos;
     }
-    public boolean temResumo(String tema) {
-        for (int i = 0; tema.length(); i++) {
-            if (tema.equals(tema[i])) {
+    public boolean temResumo(String t) {
+        for (int i = 0; i < tema.length; i++) {
+            if (t.equals(this.tema[i])) {
                 return true;
             }
-            return false;
+        }
+        return false;
         }
     }
