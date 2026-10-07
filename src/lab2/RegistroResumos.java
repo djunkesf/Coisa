@@ -7,15 +7,11 @@ package lab2;
  * @author Daniela Junkes Fernandes
  */
 public class RegistroResumos {
-    /**
-     * Array que armazena os temas dos resumos.
-     */
-    private String[] tema;
 
     /**
-     * Array que armazena os conteudos dos resumos.
+     * Array que armazena os resumos pela classe Resumo.
      */
-    private String[] conteudo;
+    private Resumo[] resumos;
 
     /**
      * Conta a quantidade de Resumos adicionados nos arrays.
@@ -39,9 +35,8 @@ public class RegistroResumos {
     public RegistroResumos(int numeroDeResumos) {
         this.limite = numeroDeResumos;
         this.proximaPosicao = 0;
-        this.tema = new String[numeroDeResumos];
-        this.conteudo = new String[numeroDeResumos];
         this.quantidadeResumos = 0;
+        this.resumos = new Resumo[limite];
     }
 
     /**
@@ -52,11 +47,9 @@ public class RegistroResumos {
      */
     public void adiciona(String tema, String conteudo) {
         if (proximaPosicao > limite-1) {
-            this.tema[proximaPosicao-limite-1] = tema;
-            this.conteudo[proximaPosicao-limite-1] = conteudo;
+            this.resumos[proximaPosicao-limite-1] = new Resumo(tema, conteudo);
         } else {
-            this.tema[proximaPosicao] = tema;
-            this.conteudo [proximaPosicao] = conteudo;
+            this.resumos[proximaPosicao] = new Resumo(tema, conteudo);
 
         }
         quantidadeResumos ++;
@@ -71,7 +64,7 @@ public class RegistroResumos {
     public String[] pegaResumos() {
         String[] resultado = new String[this.quantidadeResumos];
         for (int i =0; i < this.quantidadeResumos; i++) {
-            resultado[i] = this.tema[i] + ": " + this.conteudo[i];
+            resultado[i] = resumos[i].toString();
         }
         return resultado;
     }
@@ -81,16 +74,17 @@ public class RegistroResumos {
      * @return uma string
      */
     public String imprimeResumos() {
-        String lt = "";
-        for (int i=0; i<tema.length; i++) {
-            if (this.tema[i] != null ) {
+        String imprime = "- " + conta() + " Resumo(s) cadastrado(s)\n- ";
+
+        for (int i=0; i<quantidadeResumos; i++) {
+            if (resumos[i].getTema() != null ) {
                 if (i > 0) {
-                    lt += " | ";
+                    imprime += " | ";
                 }
-                lt += this.tema[i];
+                imprime += resumos[i].getTema();
             }
         }
-        return "- " + this.quantidadeResumos +" resumo(s) cadastrado(s)\n- " + lt;
+        return imprime;
     }
 
     /**
@@ -103,12 +97,12 @@ public class RegistroResumos {
 
     /**
      * Verifica se um tema ja se encontra no registro de resumos.
-     * @param temas nome do tema que vai ser buscado
+     * @param tema nome do tema que vai ser buscado
      * @return true se for encontrado, caso contrário, retorna false.
      */
-    public boolean temResumo(String temas) {
-        for (int i = 0; i < tema.length; i++) {
-            if (temas.equals(this.tema[i])) {
+    public boolean temResumo(String tema) {
+        for (int i = 0; i < quantidadeResumos; i++) {
+            if (resumos[i].getTema().equals(tema)) {
                 return true;
             }
         }
