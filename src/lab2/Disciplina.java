@@ -21,6 +21,12 @@ public class Disciplina {
      * Array das notas que o aluno tirou na disciplina.
      */
     private double[] notas;
+    /**
+     * quantidade de notas
+     */
+    private int qtdnotas;
+
+    private String[] pesos;
 
     /**
      * Constroi uma Disciplina a partir do nome da disciplina.
@@ -32,6 +38,14 @@ public class Disciplina {
         this.nomedaDisciplina = nomedaDisciplina;
     }
 
+    public Disciplina(int qtdnotas){
+        this.qtdnotas = qtdnotas;
+    }
+
+    public Disciplina(String nomedaDisciplina, int qtdnotas, String[] pesos){
+        this.nomedaDisciplina = nomedaDisciplina;
+        this.qtdnotas = qtdnotas;
+    }
     /**
      * Metodo sem retorno que cadastra horas de estudo do aluno.
      * @param horas

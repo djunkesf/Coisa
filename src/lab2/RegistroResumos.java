@@ -1,5 +1,7 @@
 package lab2;
 
+import java.util.Arrays;
+
 /**
  * Representação de um registro de resumos de estudos.
  * Armazena temas e conteúdos com um limite estabelecido. Se o limite for atingido, os temas e conteudos sao substituidos de modo circular.
@@ -46,14 +48,16 @@ public class RegistroResumos {
      * @param conteudo o conteuoo do resumo
      */
     public void adiciona(String tema, String conteudo) {
-        if (proximaPosicao > limite-1) {
-            this.resumos[proximaPosicao-limite-1] = new Resumo(tema, conteudo);
-        } else {
-            this.resumos[proximaPosicao] = new Resumo(tema, conteudo);
+        if (temResumo(tema) == false) {
+            if (proximaPosicao > limite - 1) {
+                this.resumos[proximaPosicao - limite - 1] = new Resumo(tema, conteudo);
+            } else {
+                this.resumos[proximaPosicao] = new Resumo(tema, conteudo);
 
+            }
+            quantidadeResumos++;
+            proximaPosicao++;
         }
-        quantidadeResumos ++;
-        proximaPosicao ++;
     }
 
     /**
@@ -108,4 +112,32 @@ public class RegistroResumos {
         }
         return false;
         }
+
+    /**
+     * Busca a palavra chave sobre os conteúdos dos resumos cadastrados. Se a palavra for encontrada, insere o tema do resumo correspondente no array.
+     * @param chaveDeBusca a palavra chave a ser buscada
+     * @return um array de String
+     */
+
+    public String[] busca(String chaveDeBusca) {
+        int cont = 0;
+
+        for (int i=0; i < quantidadeResumos; i++) {
+            if (resumos[i].getConteudo().toLowerCase().contains(chaveDeBusca.toLowerCase())) {
+                cont ++;
+            }
+        }
+        String[] resultado = new String[cont];
+
+        for (int i =0; i < quantidadeResumos; i++) {
+            if (resumos[i].getConteudo().toLowerCase().contains(chaveDeBusca.toLowerCase())) {
+                resultado[cont-1] = resumos[i].getTema();
+                cont -= 1;
+            }
+        }
+        Arrays.sort(resultado);
+
+        return resultado;
+
     }
+}

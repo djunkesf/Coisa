@@ -29,6 +29,9 @@ public class Resumo {
         return tema;
     }
 
+    public String getConteudo() {
+        return conteudo;
+    }
     /**
      * Retorna uma representação de texto no formato "tema: conteudo".
      * @return uma string.
